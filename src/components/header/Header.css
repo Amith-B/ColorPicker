@@ -1,0 +1,17 @@
+.header {
+  width: 100%;
+  background-color: orange;
+  font-weight: bold;
+  color: white;
+  font-size: xxx-large;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.heading {
+  padding-left: 0.8em;
+  padding-top: 0.05em;
+  padding-bottom: 0.2em;
+}
+.letter {
+  display: inline-block;
+}
