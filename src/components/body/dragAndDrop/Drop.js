@@ -9,9 +9,9 @@ export default function Drop({ onDrop }) {
   const [hover, setHover] = useState(false);
   return (
     <div
-      className="Drop"
-      onMouseEnter={(event) => setHover(!hover)}
-      onMouseLeave={(event) => setHover(!hover)}
+      className="Drop m-3"
+      onMouseEnter={() => setHover(!hover)}
+      onMouseLeave={() => setHover(!hover)}
       style={{
         height: "120px",
         backgroundColor: hover ? "#cccccc" : "#f8f8f9",
@@ -20,9 +20,15 @@ export default function Drop({ onDrop }) {
         padding: 0,
         border: "2px dashed black",
         borderRadius: "10px",
+        cursor: "pointer",
       }}
     >
-      <Dropzone onDrop={handleDrop} accept="image/*">
+      <Dropzone
+        onDrop={handleDrop}
+        accept={{
+          "image/png": [".png", ".jpeg", ".jpg", ".svg"],
+        }}
+      >
         {({
           getRootProps,
           getInputProps,

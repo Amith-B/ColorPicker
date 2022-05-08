@@ -13,7 +13,7 @@ import ImageCanvas from "./imageCanvas/ImageCanvas";
 import PixelWindow from "./pixelWindow/PixelWindow";
 import Drop from "./dragAndDrop/Drop";
 
-function Body(props) {
+function Body() {
   const [context, setContext] = useState();
   const [canvas, setCanvas] = useState();
   const [currentPixelClicked, setCurrentPixelClicked] = useState(pixel.CENTER);
@@ -32,13 +32,15 @@ function Body(props) {
   const [clickToggle, setClickToggle] = useState(true);
   const [base64, setBase64] = useState(defaultImageBase64);
   const txt = useRef();
+
   useEffect(() => {
-    console.log("Main");
     setCanvas(canv.current);
   }, []);
+
   useEffect(() => {
     canvas && setContext(canvas.getContext("2d"));
   }, [canvas]);
+
   useEffect(() => {
     context && draw(defaultImageBase64, canvas, context);
 
@@ -50,7 +52,6 @@ function Body(props) {
 
         let reader = new FileReader();
         reader.onload = function (event) {
-          //document.getElementById("container").src = event.target.result;
           draw(whiteImageBase64, canvas, context);
           draw(event.target.result, canvas, context);
           setBase64(event.target.result);
@@ -62,14 +63,10 @@ function Body(props) {
   }, [canvas, context]);
 
   const getFileUrlAndDraw = (event) => {
-    //const img = new Image();
-    const file = event[0]; //;.target.files[0];
+    const file = event[0];
 
     const reader = new FileReader();
     reader.onload = function (event) {
-      //document.getElementById("container").src = event.target.result;
-      //draw(event.target.result, canvas, context);
-      //console.log("test", event.target.result);
       draw(whiteImageBase64, canvas, context);
       draw(event.target.result, canvas, context);
       setBase64(event.target.result);
@@ -77,11 +74,6 @@ function Body(props) {
     try {
       reader.readAsDataURL(file);
     } catch (error) {}
-
-    //const urlObject = window.URL || window.webkitURL;
-    //const src = urlObject.createObjectURL(file);
-    // draw(whiteImageBase64, canvas, context);
-    // draw(src, canvas, context, urlObject);
   };
 
   const setPixel = (event) => {
@@ -111,101 +103,100 @@ function Body(props) {
   };
 
   return (
-    <div className="container content">
-      {/* <input
-        className="form-control mr-sm-2"
-        type="file"
-        onChange={(event) => {
-          console.log(event.target.files[0]);
-          const urlObject = window.URL || window.webkitURL;
-          const src = urlObject.createObjectURL(event.target.files[0]);
-          console.log(src);
-          //getFileUrlAndDraw(event);
-        }}
-      /> */}
-      <Drop onDrop={getFileUrlAndDraw} />
-      <div className="row mx-auto">
-        <ImageCanvas
-          setPixel={setPixel}
-          canv={canv}
-          className="col"
-          clickToggle={clickToggle}
-          setClickToggle={setClickToggle}
-        />
-        <div className="col">
-          <div className="row">
-            <Pixel
-              className="col"
-              colors={colors}
-              currentPixelClicked={currentPixelClicked}
-              setCurrentPixelClicked={setCurrentPixelClicked}
-            />
-            <div
-              className="col"
-              style={{
-                textAlign: "center",
-                color: "#333333",
-                fontWeight: "bold",
-                fontSize: "xx-large",
-                alignSelf: "center",
-              }}
-            >
-              {clickToggle ? "Mouse pointer Unlocked" : "Locked"}
-            </div>
-          </div>
-          <PixelWindow
-            className="row"
-            pixelPosition={currentPixelClicked}
-            hex={colors[currentPixelClicked]}
+    <div className="container-fluid content">
+      <div className="container">
+        <Drop onDrop={getFileUrlAndDraw} />
+        <div
+          className="row mx-auto"
+          style={{ alignItems: "center", justifyContent: "center" }}
+        >
+          <ImageCanvas
+            setPixel={setPixel}
+            canv={canv}
+            className="col m-3"
+            clickToggle={clickToggle}
+            setClickToggle={setClickToggle}
           />
+          <div className="col m-3">
+            <div className="row" style={{ alignItems: "center" }}>
+              <Pixel
+                className="col"
+                colors={colors}
+                currentPixelClicked={currentPixelClicked}
+                setCurrentPixelClicked={setCurrentPixelClicked}
+              />
+              <div
+                className="col m-3"
+                style={{
+                  textAlign: "center",
+                  color: "#333333",
+                  fontWeight: "bold",
+                  fontSize: "x-large",
+                  alignSelf: "center",
+                }}
+              >
+                {clickToggle ? "Mouse pointer Unlocked" : "Locked"}
+              </div>
+            </div>
+            <PixelWindow
+              className="row m-2"
+              pixelPosition={currentPixelClicked}
+              hex={colors[currentPixelClicked]}
+            />
+          </div>
         </div>
-      </div>
-      <div style={{ fontWeight: "bold", fontSize: "xx-large" }}>
-        Base64
-        <button
-          onClick={() => {
-            txt.current.select();
-            document.execCommand("copy");
-            alert("Copied");
-            console.log("clicked", txt.current);
-          }}
-          style={{ marginLeft: "5px", marginRight: "5px" }}
-          className="btn btn-success btn-sm"
-          type="button"
+        <hr />
+        <div
+          className="m-3"
+          style={{ fontWeight: "bold", fontSize: "xx-large" }}
         >
-          copy to clipboard
-        </button>
-        <button
-          onClick={() => {
-            navigator.clipboard
-              .readText()
-              .then((text) => {
-                draw(whiteImageBase64, canvas, context);
-                draw(text, canvas, context);
-                setBase64(text);
-              })
-              .catch((err) => {
-                alert("Failed to read clipboard content");
-              });
+          Base64
+          <button
+            onClick={() => {
+              txt.current.select();
+              document.execCommand("copy");
+              alert("Copied");
+              console.log("clicked", txt.current);
+            }}
+            style={{ marginLeft: "5px", marginRight: "5px" }}
+            className="btn btn-success btn-sm"
+            type="button"
+          >
+            copy to clipboard
+          </button>
+          <button
+            onClick={() => {
+              navigator.clipboard
+                .readText()
+                .then((text) => {
+                  draw(whiteImageBase64, canvas, context);
+                  draw(text, canvas, context);
+                  setBase64(text);
+                })
+                .catch((err) => {
+                  alert("Failed to read clipboard content");
+                });
+            }}
+            style={{ marginLeft: "5px", marginRight: "5px" }}
+            className="btn btn-primary btn-sm"
+            type="button"
+          >
+            paste from clipboard
+          </button>
+        </div>
+        <textarea
+          style={{ width: "100%", resize: "vertical" }}
+          rows="6"
+          ref={txt}
+          value={base64}
+          className="m-3"
+          onChange={(event) => {
+            draw(whiteImageBase64, canvas, context);
+            draw(event.target.value, canvas, context);
+            setBase64(event.target.value);
           }}
-          style={{ marginLeft: "5px", marginRight: "5px" }}
-          className="btn btn-primary btn-sm"
-          type="button"
-        >
-          paste from clipboard
-        </button>
+        ></textarea>
       </div>
-      <textarea
-        style={{ width: "100%", resize: "vertical" }}
-        rows="6"
-        ref={txt}
-        value={base64}
-        onChange={(event) => {
-          draw(whiteImageBase64, canvas, context);
-          draw(event.target.value, canvas, context);
-          setBase64(event.target.value);
-        }}
-      ></textarea>
     </div>
   );
 }

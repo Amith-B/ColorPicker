@@ -12,11 +12,16 @@ function ImageCanvas({
       className={className}
       style={{
         backgroundColor: "grey",
-        margin: 0,
         padding: 0,
-        maxWidth: "394px",
-        maxHeight: "304px",
+        maxWidth: "411px",
+        maxHeight: "310px",
+        minWidth: "314px",
+        minHeight: "300px",
         border: "2px solid grey",
+        overflow: "auto",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <canvas

@@ -1,43 +1,21 @@
 import React from "react";
 import "./Header.css";
 
-function Header(props) {
+function Header() {
   return (
-    <div className="header container-lg">
-      <div className="heading">
-        <div className="letter" style={{ color: "black" }}>
-          C
-        </div>
-        <div className="letter" style={{ color: "red" }}>
-          o
-        </div>
-        <div className="letter" style={{ color: "lightgreen" }}>
-          l
-        </div>
-        <div className="letter" style={{ color: "grey" }}>
-          o
-        </div>
-        <div className="letter" style={{ color: "white" }}>
-          r
-        </div>
-        <div className="letter" style={{ color: "black" }}>
-          P
-        </div>
-        <div className="letter" style={{ color: "white" }}>
-          i
-        </div>
-        <div className="letter" style={{ color: "pink" }}>
-          c
-        </div>
-        <div className="letter" style={{ color: "grey" }}>
-          k
-        </div>
-        <div className="letter" style={{ color: "yellow" }}>
-          e
-        </div>
-        <div className="letter" style={{ color: "lightblue" }}>
-          r
-        </div>
+    <div className="header container-fluid">
+      <div className="heading container">
+        <span style={{ color: "black" }}>C</span>
+        <span style={{ color: "lightblue" }}>o</span>
+        <span style={{ color: "lightgreen" }}>l</span>
+        <span style={{ color: "grey" }}>o</span>
+        <span style={{ color: "white" }}>r</span>
+        <span style={{ color: "black" }}>P</span>
+        <span style={{ color: "white" }}>i</span>
+        <span style={{ color: "pink" }}>c</span>
+        <span style={{ color: "grey" }}>k</span>
+        <span style={{ color: "yellow" }}>e</span>
+        <span style={{ color: "lightblue" }}>r</span>
       </div>
     </div>
   );

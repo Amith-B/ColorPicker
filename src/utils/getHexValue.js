@@ -1,7 +1,7 @@
 import * as pixel from "../config/pixelDirection";
 import { rgbToHex } from "./colorConversion";
 
-export default function (eventLocation, context, pixelPosition) {
+export default function getHexValue(eventLocation, context, pixelPosition) {
   let x = 0,
     y = 0;
   switch (pixelPosition) {

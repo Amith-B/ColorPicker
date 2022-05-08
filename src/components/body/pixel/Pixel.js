@@ -22,9 +22,8 @@ function Pixel({
     <div
       className={className}
       key={index}
-      onClick={(event) => {
+      onClick={() => {
         setCurrentPixelClicked(dir);
-        //console.log(dir, colors[dir], event.target);
       }}
       style={{
         borderRadius: currentPixelClicked === dir ? "5px" : "15px",
@@ -40,9 +39,12 @@ function Pixel({
 
   return (
     <div
-      className="col"
+      className="col m-3"
       style={{
         maxWidth: "110px",
+        maxHeight: "110px",
+        minWidth: "110px",
+        minHeight: "110px",
         borderRadius: "10px",
         border: "2px solid grey",
       }}
