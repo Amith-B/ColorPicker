@@ -33,6 +33,7 @@ function Pixel({
         margin: "2px",
         border: currentPixelClicked === dir ? "2px solid black" : "0px",
         backgroundColor: colors[dir],
+        cursor: "pointer",
       }}
     ></div>
   );

@@ -32,6 +32,7 @@ function ImageCanvas({
         ref={canv}
         width="390px"
         height="300px"
+        style={{ cursor: "crosshair" }}
       ></canvas>
     </div>
   );

@@ -79,26 +79,20 @@ function Body() {
   const setPixel = (event) => {
     let eventLocation = getEventLocation(event);
 
-    setColors((colors) => {
-      return {
-        [pixel.TOP]: getHexValue(eventLocation, context, pixel.TOP),
-        [pixel.LEFT]: getHexValue(eventLocation, context, pixel.LEFT),
-        [pixel.BOTTOM]: getHexValue(eventLocation, context, pixel.BOTTOM),
-        [pixel.BOTTOMLEFT]: getHexValue(
-          eventLocation,
-          context,
-          pixel.BOTTOMLEFT
-        ),
-        [pixel.BOTTOMRIGHT]: getHexValue(
-          eventLocation,
-          context,
-          pixel.BOTTOMRIGHT
-        ),
-        [pixel.CENTER]: getHexValue(eventLocation, context, pixel.CENTER),
-        [pixel.TOPLEFT]: getHexValue(eventLocation, context, pixel.TOPLEFT),
-        [pixel.TOPRIGHT]: getHexValue(eventLocation, context, pixel.TOPRIGHT),
-        [pixel.RIGHT]: getHexValue(eventLocation, context, pixel.RIGHT),
-      };
+    setColors({
+      [pixel.TOP]: getHexValue(eventLocation, context, pixel.TOP),
+      [pixel.LEFT]: getHexValue(eventLocation, context, pixel.LEFT),
+      [pixel.BOTTOM]: getHexValue(eventLocation, context, pixel.BOTTOM),
+      [pixel.BOTTOMLEFT]: getHexValue(eventLocation, context, pixel.BOTTOMLEFT),
+      [pixel.BOTTOMRIGHT]: getHexValue(
+        eventLocation,
+        context,
+        pixel.BOTTOMRIGHT
+      ),
+      [pixel.CENTER]: getHexValue(eventLocation, context, pixel.CENTER),
+      [pixel.TOPLEFT]: getHexValue(eventLocation, context, pixel.TOPLEFT),
+      [pixel.TOPRIGHT]: getHexValue(eventLocation, context, pixel.TOPRIGHT),
+      [pixel.RIGHT]: getHexValue(eventLocation, context, pixel.RIGHT),
     });
   };
 
