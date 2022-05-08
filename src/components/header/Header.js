@@ -19,7 +19,7 @@ function Header() {
           <span style={{ color: "lightblue" }}>r</span>
         </div>
 
-        <a href="https://github.com/Amith-B/ColorPicker" target="_blank">
+        <a href="https://github.com/Amith-B/ColorPicker" target="_blank" className="d-flex">
           <img
             alt="github"
             src="./github.svg"
