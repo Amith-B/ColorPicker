@@ -73,8 +73,8 @@ function PixelWindow({ className, hex, pixelPosition }) {
           <div className="window__dummy-button"></div>
         </div>
         <div
-          className="text-light position-absolute d-flex justify-content-center"
-          style={{ width: "100%", left: 0 }}
+          className="position-absolute d-flex justify-content-center"
+          style={{ width: "100%", left: 0, fontWeight: "bold" }}
         >
           {pixelPosition + " pixel"}
         </div>
